@@ -292,6 +292,7 @@ git commit -m "add line 3"
 After the --amend complete, a new commit id will be generated replacing the previous one. This is because the commit id hash is calculated based on the committed changes, commit message, and timestamp. If any one of this change, the commit id hash will change also.
 ```
 ## Change the content of the last commit.
+After you commit, you realize that you forgot to include some files in the commit. You can amend the commit to include these additional files that you forgot earlier.
 1. Make sure you have run the previous demo "Change the last commit message".
 2. edit file1.txt by adding "(forgot something)" to the end of "line 3"
 3. Stage the change by run **git add file1.txt**.
