@@ -1,9 +1,9 @@
 
 - [Git tag](#git-tag)
   - [Create tag from server side.](#create-tag-from-server-side)
-- [Viewing the contents of a tag and create a branch from the tag](#viewing-the-contents-of-a-tag-and-create-a-branch-from-the-tag)
+  - [Viewing the contents of a tag and create a branch from the tag](#viewing-the-contents-of-a-tag-and-create-a-branch-from-the-tag)
   - [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server)
-- [Delete tag from local repo and push to server.](#delete-tag-from-local-repo-and-push-to-server)
+  - [Delete tag from local repo and push to server.](#delete-tag-from-local-repo-and-push-to-server)
 
 # Git tag
 ## Create tag from server side.
@@ -43,7 +43,7 @@ git commit -m "add line 5"
 Note: Step 5 to 8 assume you are using Azure DevOps. If you are using GitHub, you can also create and view tag using the GitHub web or desktop.
 ```
     
-# Viewing the contents of a tag and create a branch from the tag
+## Viewing the contents of a tag and create a branch from the tag
 Complete the demo [Create tag from server side](#create-tag-from-server-side) to setup the backdrop.
 1. We can check the contents of the tag by running **git checkout release1**.
 2. Run **git log** and show the content of *file1.txt*. In *file1.txt*, you should only see up to 'line3'.
@@ -68,7 +68,7 @@ Side note: You can also push all tags by **git push --tags \<repo-name\>**. But 
 Note 2: If you want to create a tag from the latest commit, omit the commit hash in 'git tag', run 'git tag -a <tag_name> -m "<message>"'.
 ```
 
-# Delete tag from local repo and push to server.
+## Delete tag from local repo and push to server.
 Complete the demo [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server) to setup the backdrop. 
 1. We will now delete the tag *alpha1* we just created and also delete it at the server repo.
 2. To delete a tag, run `git tag -d alpha1`. (syntax: **git tag -d \<tagname\>**)
