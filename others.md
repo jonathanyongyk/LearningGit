@@ -4,6 +4,7 @@
   - [Setting user name and email](#setting-user-name-and-email)
   - [Listing command](#listing-command)
   - [Alias](#alias)
+  - [Setting Editor](#setting-editor)
 - [Move/Rename and delete file](#moverename-and-delete-file)
   - [Move/Rename file](#moverename-file)
   - [Delete file](#delete-file)
@@ -57,6 +58,11 @@ Alias enable you to create shorthand to common commands you use to save typing t
    ```
 8. Now run ```git m``` to switch to master branch, and run ```git branch``` to ascertain that you are in the **f1** branch.
 
+## Setting Editor
+1. When you make a commit using `git -m "some messages"`, you can only conveniently enter a simple one liner message. If you need to enter multi-line commit message, you need to use command `git commit` instead. This will open up a editor.
+2. You can change what the default editor git will use when it need to open up a new editor.
+3. To change the default editor globally, run `git config --global core.editor "Path to editor"`. Example: `git config --global core.editor "C:\\<path>\\notepad2.exe"`. In this example, I am using notepad2 on my Windows laptop.
+4. Now if you run `git commit`, notepad2.exe will open. Git will wait until you save and close notepad2.exe.
 
 # Move/Rename and delete file
 ## Move/Rename file
