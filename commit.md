@@ -1,5 +1,6 @@
 - [Overview](#overview)
 - [Commit](#commit)
+  - [Enter a multi-line commit message.](#enter-a-multi-line-commit-message)
   - [Show commit pending to push](#show-commit-pending-to-push)
   - [Discard last commit and revert to the previous commit (reset)](#discard-last-commit-and-revert-to-the-previous-commit-reset)
   - [Revert a specific commit (go back to the commit before it)](#revert-a-specific-commit-go-back-to-the-commit-before-it)
@@ -22,6 +23,32 @@
 This demo show common commands related to working with commit.
 
 # Commit
+## Enter a multi-line commit message.
+1. When you make a commit using `git commit -m "some messages"`, you can only conveniently enter a simple one liner message. 
+2. If you need to enter multi-line commit message, you need to use command `git commit` instead. This will open up a editor.
+3. When you enter a multi-line commit message in the editor, you need to follow some specific convention.
+4. Run the following powershell script to setup a demo repo and see how it works.
+    ```powershell
+    git init
+
+    Add-Content -Path .\file1.txt -Value 'line1'
+    git add file1.txt
+    ```
+5. Run `git commit`. This will open an editor. The git command will wait until the editor is closed.
+6. In the editor, remove all the existing text.
+7. Enter the following into the editor.
+   ```text
+   This is a multi-line commit
+
+   This is the more details about the commit.
+   You are now practicing how to enter multi line commits.
+   ```
+8. Save and close the editor. After the editor close, git will return to the prompt.
+9. In multi-line commit message, there is a subject line and the content. In our example above, *This is a multi-line commit* is our subject line. To separate the subject line from the rest of the content of the message, there must be an empty line in between.
+10. Run `git log`, you will see the entire of the commit message.
+11. Run `git log --oneline`, you will only see the subject line, in our example it is *This is a multi-line commit*.
+12. Keep the subject line brief but meaningful.
+    
 ## Show commit pending to push
 1. Clone a repo from the server.
 2. Make some changes locally and commit.
