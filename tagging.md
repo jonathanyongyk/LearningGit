@@ -1,7 +1,9 @@
 
 - [Git tag](#git-tag)
   - [Create tag from server side.](#create-tag-from-server-side)
+- [Viewing the contents of a tag and create a branch from the tag](#viewing-the-contents-of-a-tag-and-create-a-branch-from-the-tag)
   - [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server)
+- [Delete tag from local repo and push to server.](#delete-tag-from-local-repo-and-push-to-server)
 
 # Git tag
 ## Create tag from server side.
@@ -34,16 +36,22 @@ git commit -m "add line 5"
 6. To the right of "add line 3" commit, click on the triple dot and select **Create Tag**.
 7. Give the tag name '*release1*' and enter a description, click **Create**.
 8. If you go to **Repos | Tags**, you can see the tag listed there.
-9.  Go to the local folder, and **run git tag -l** and you see no tag yet.
+9.  Go to the local folder, and **run git tag -l** to list all the tags and you see no tag yet.
 10. Run **git pull** to update the local repo.
 11. run **git tag -l** again and you see the tag.
-12. We can check the contents of the tag by running **git checkout release1**.
-13. Run **git log** and show the content of *file1.txt*.
-14. You can also create a new branch from this tag. This is useful for scenario which you wwant to make a code change or bug fix baed on specific commit or "release". Run **git switch -c r1patch1**.
-15. Open *file1.txt* and change "line2" to "line2a".
-16. Commit the change.
-17. Push the commit to server. Since this branchh does not exist on server yet, we need to run **git push -u origin r1patch1:r1patch1**.
-18. Go to the server repo and chech that you have the new branch with the expected commit. You can now proceed to do Pull Request to merge in a normal workflow, but we will not do that for this demo.
+```text
+Note: Step 5 to 8 assume you are using Azure DevOps. If you are using GitHub, you can also create and view tag using the GitHub web or desktop.
+```
+    
+# Viewing the contents of a tag and create a branch from the tag
+Complete the demo [Create tag from server side](#create-tag-from-server-side) to setup the backdrop.
+1. We can check the contents of the tag by running **git checkout release1**.
+2. Run **git log** and show the content of *file1.txt*. In *file1.txt*, you should only see up to 'line3'.
+3. You can also create a new branch from this tag. This is useful for scenario which you want to make a code change or bug fix baed on specific commit or "release". Run **git switch -c r1patch1**.
+4. Open *file1.txt* and change "line2" to "line2a".
+5. Commit the change.
+6. Push the commit to server. Since this branchh does not exist on server yet, we need to run **git push -u origin r1patch1:r1patch1**.
+7. Go to the server repo and check that you have the new branch with the expected commit. You can now proceed to do Pull Request to merge in a normal workflow, but we will not do that for this demo.
   
 ## Create tag from local and push to server.
 Complete the demo [Create tag from server side](#create-tag-from-server-side) to setup the backdrop. If not at least perform step 1 to 4.
@@ -58,3 +66,6 @@ Side note: You can also push all tags by **git push --tags \<repo-name\>**. But 
 ```text
 Note 2: If you want to create a tag from the latest commit, omit the commit hash in 'git tag', run 'git tag -a <tag_name> -m "<message>"'.
 ```
+
+# Delete tag from local repo and push to server.
+Complete the demo [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server) to setup the backdrop. 
