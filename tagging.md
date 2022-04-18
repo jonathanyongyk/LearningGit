@@ -52,4 +52,9 @@ Complete the demo [Create tag from server side](#create-tag-from-server-side) to
 3. Run **git tag -l** to make sure the tag is created.
 4. Run **git push origin alpha1** to push the tag to server. (syntax: **git push \<repo_name\> \<tagname\>**)
 5. Go to server repo and you should see the tag you just pushed.
-6. Side note: You can also push all tags by **git push --tags \<repo-name\>**. But this is uncommon because it is unlikely you will create a bunch of random tags and push it to server.
+```text
+Side note: You can also push all tags by **git push --tags \<repo-name\>**. But this is uncommon because it is unlikely you will create a bunch of random tags and push it to server.
+```
+```text
+Note 2: If you want to create a tag from the latest commit, omit the commit hash in 'git tag', run 'git tag -a <tag_name> -m "<message>"'.
+```
