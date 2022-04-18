@@ -55,11 +55,12 @@ Complete the demo [Create tag from server side](#create-tag-from-server-side) to
   
 ## Create tag from local and push to server.
 Complete the demo [Create tag from server side](#create-tag-from-server-side) to setup the backdrop. If not at least perform step 1 to 4.
-1. In the local repo, run **git log** to find the commit hash for "add line 4" .
-2. We will create a tag based on the commit for "add line 4". Run **git tag -a alpha1 \<hash for add line 4\> -m "This is alpha test"**.
-3. Run **git tag -l** to make sure the tag is created.
-4. Run **git push origin alpha1** to push the tag to server. (syntax: **git push \<repo_name\> \<tagname\>**)
-5. Go to server repo and you should see the tag you just pushed.
+1. In the local repo, make sure you are in the main/master branch.
+2. Run **git log --oneline** to find the commit hash for "add line 4" .
+3. We will create a tag based on the commit for "add line 4". Run **git tag -a alpha1 \<hash for add line 4\> -m "This is alpha test"**.
+4. Run **git tag -l** to make sure the tag is created.
+5. Run **git push origin alpha1** to push the tag to server. (syntax: **git push \<repo_name\> \<tagname\>**)
+6. Go to server repo and you should see the tag you just pushed.
 ```text
 Side note: You can also push all tags by **git push --tags \<repo-name\>**. But this is uncommon because it is unlikely you will create a bunch of random tags and push it to server.
 ```
@@ -69,3 +70,9 @@ Note 2: If you want to create a tag from the latest commit, omit the commit hash
 
 # Delete tag from local repo and push to server.
 Complete the demo [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server) to setup the backdrop. 
+1. We will now delete the tag *alpha1* we just created and also delete it at the server repo.
+2. To delete a tag, run `git tag -d alpha1`. (syntax: **git tag -d \<tagname\>**)
+3. Run `git tag -l` and *alpha1* should be gone.
+4. Now let's delete the tag at the server repo by pushing this to the server repo.
+5. Run `git push origin --delete alpha1`. (syntax: **git push origin --delete  \<tagname\>**)
+6. Go to the server repo and refresh the tag page. *alpha1* should not be visible anymore.
