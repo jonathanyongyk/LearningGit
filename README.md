@@ -9,7 +9,7 @@ The objective of me publishing this repo is
 # Useful reading
 [Git Internals - Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)  
 [Commits are snapshots, not diffs](https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/)  
-[A Visual Git Reference](https://marklodato.github.io/visual-git-guide/index-en.html) 
+[A Visual Git Reference](https://marklodato.github.io/visual-git-guide/index-en.html)  
 [Git Reference](http://git.github.io/git-reference/index.html)
 
 # Contribution
