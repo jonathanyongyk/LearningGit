@@ -4,6 +4,7 @@
   - [Viewing the contents of a tag and create a branch from the tag](#viewing-the-contents-of-a-tag-and-create-a-branch-from-the-tag)
   - [Create tag from local and push to server.](#create-tag-from-local-and-push-to-server)
   - [Delete tag from local repo and push to server.](#delete-tag-from-local-repo-and-push-to-server)
+  - [Listing tag](#listing-tag)
 
 # Git tag
 ## Create tag from server side.
@@ -76,3 +77,27 @@ Complete the demo [Create tag from local and push to server.](#create-tag-from-l
 4. Now let's delete the tag at the server repo by pushing this to the server repo.
 5. Run `git push origin --delete alpha1`. (syntax: **git push origin --delete  \<tagname\>**)
 6. Go to the server repo and refresh the tag page. *alpha1* should not be visible anymore.
+
+## Listing tag
+When you list a tags with `git tag`, you can search for tag that match some pattern.
+1. Run the following script to setup a demo repo. (This script run in Bash and Powershell)
+   ```bash
+    git init
+    echo "line1" >> file1.txt
+    git add *
+    git commit -m "add file"
+   ```
+2. Run the following to create a five tags. (The tags are all created on the same commit, but is good enough for our demo) 
+   ```bash
+    git tag -a v1.0.0 -m "v100"
+    git tag -a v1.0.1 -m "v101"
+    git tag -a v1.0.2 -m "v102"
+    git tag -a v1.2.0 -m "v120"
+    git tag -a v1.2.1 -m "v121"
+    git tag -a v2.0.0 -m "v200"
+    git tag -a v2.0.1 -m "v201"    
+   ```
+3. Let start with basic. To list all the tags, run `git tag` or `git tag -l`.
+4. To list tags that are major and minor version 1.0, run `git tag -l "v1.0.*"`.
+5. To list tags that are the first major version, run `git tag -l "v*.0.0"`.
+6. To list tags that are the patch version 1, run `git tag -l "v*.*.1"`. (Note: There could be no reason why you would want to list this way, it is just a illustration of what is possible)
