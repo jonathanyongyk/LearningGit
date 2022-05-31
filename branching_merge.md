@@ -90,7 +90,8 @@ Prune server branch that does not exist
 2. Create a new branch (f1) from master/main. Run `git checkout -b f1`.
 3. To rename a branch to "feature1", run `git branch -m feature1`.
 4. If this branch has a upstream branch, run `git push origin -u <new_branch_name>` to push the branch to origin with new name, then run `git push origin --delete <old_branch_name>` to delete the old branch from origin.
-5. 
+
+
 # Merging
 ## Fast forward merge
 A fast-forward merge can occur when there is a linear path from the current branch tip to the target branch. Instead of actually merging the branches, all Git has to do to integrate the histories is move (i.e., "fast forward") the current branch tip up to the target branch tip.
