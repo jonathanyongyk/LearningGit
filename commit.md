@@ -18,6 +18,7 @@
   - [Follow and list commits](#follow-and-list-commits)
   - [Following commits which is unique in a branch.](#following-commits-which-is-unique-in-a-branch)
   - [Following merge commits.](#following-merge-commits)
+  - [Look up commit id for HEAD (or older commit from HEAD)](#look-up-commit-id-for-head-or-older-commit-from-head)
 
 # Overview
 This demo show common commands related to working with commit.
@@ -449,3 +450,37 @@ This technique is useful when your branches has diverted and you want to inspect
 4. Run ```git log --oneline``` to get the new commit log.
 5. Run ```git rev-list <latest commit ID> --merges```. This time you should only see one commit in the output. This commit is the new commit when you merge from f1 ("Merge branch 'f1'"). The *--merges* flag tell git to list only merge commit.
 6. If you want to know the two commits which are merged in this commit, run ```git cat-file -p <commmid ID of "Merge branch 'f1'">```. You should see there are two parent commits.
+
+## Look up commit id for HEAD (or older commit from HEAD)
+You can find out the commit ID for the current HEAD or any older commit backtrack from the HEAD. Use **rev-parse** to get the hash given a revision specifier/ref.
+1. Run the following script to initialize a repo and create a few new commits.
+   ```bash
+      git init
+      echo "line1" >> file1.txt
+      git add file1.txt
+      git commit -m "add file1"
+
+      echo "line1" >> file2.txt
+      git add file2.txt
+      git commit -m "add file2"
+
+      echo "line1" >> file3.txt
+      echo "line1" >> file3b.txt
+      git add file3.txt
+      git add file3b.txt
+      git commit -m "add file3,b"
+
+      echo "line1" >> file4.txt
+      git add file4.txt
+      git commit -m "add file4"
+
+      echo "line1" >> file5.txt
+      git add file5.txt
+      git commit -m "add file5"
+   ```
+2. Run `git log --oneline` to get all the commit ids.
+3. To get the commit id for HEAD, run `git rev-parse HEAD`. Compare the commit ID with the output you see from (2), it should be the commit for "add file5".
+4. To get the commit id for the 3rd last commit from the HEAD, run `git rev-parse HEAD~3`. Compare the commit ID with the output you see from (2), it should be the commit for "add file2".
+```text
+You can also use the rev-parse command to find out hash for branch or tag.
+```
