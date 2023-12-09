@@ -12,6 +12,9 @@ The objective of me publishing this repo is
 [A Visual Git Reference](https://marklodato.github.io/visual-git-guide/index-en.html)  
 [Git Reference](http://git.github.io/git-reference/index.html)
 
+# Tooling
+Generate gitignore for IDE: https://gitignore.io  
+
 # Contribution
 As I learn more, I will continue to update this repo with more samples. Contribution is welcome. You can fork this repo and raise PR.
 
