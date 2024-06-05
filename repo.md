@@ -7,6 +7,7 @@
   - [Showing repo size.](#showing-repo-size)
   - [Migrate from one repo to another.](#migrate-from-one-repo-to-another)
   - [Mirror repo](#mirror-repo)
+  - [Update remote link](#update-remote-link)
 # Repo
 ## Start repo from Azure DevOps, then clone to client.
 1. Create a repo in Azure DevOps, add a README and Visual Studio .gitignore file.
@@ -203,3 +204,12 @@ git push
     ```
 11. Now you can see the **mirrorrepo** has exact same copy of the **mainrepo**.
 
+## Update remote link
+You may need to update the remote link of a repo. This is useful if you have a repo that need to be moved to another location. Or the PAT you used to clone the repo has expired.
+Run the following command to remove the current remote link and add a new remote link.
+```Powershell
+$newPAT = "<PAT>"
+$newOrigin = "https://token:$newPAT@github.com/owner/repo.git"
+git remote remove origin
+git remote add origin $newOrigin
+```
