@@ -7,6 +7,7 @@
   - [Showing repo size.](#showing-repo-size)
   - [Migrate from one repo to another.](#migrate-from-one-repo-to-another)
   - [Mirror repo](#mirror-repo)
+  - [Clone using PAT](#clone-using-pat)
   - [Update remote link](#update-remote-link)
 # Repo
 ## Start repo from Azure DevOps, then clone to client.
@@ -203,6 +204,14 @@ git push
     Note: If you want to push to a branch in the mirrored repo, you need to create a branch on the mirrored repo first, then run git push mirror main:mirrored-branchname.
     ```
 11. Now you can see the **mirrorrepo** has exact same copy of the **mainrepo**.
+
+## Clone using PAT
+```
+$pat = "<your PAT>"
+git clone https://token:$pat@<repo clone url>
+```
+Note: The user name ('token' in this example) is insignificant. it can be of any value.
+
 
 ## Update remote link
 You may need to update the remote link of a repo. This is useful if you have a repo that need to be moved to another location. Or the PAT you used to clone the repo has expired.
