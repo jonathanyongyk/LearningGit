@@ -37,6 +37,7 @@
 10. Add a new line to *file1.txt* and commit it.
 11. Run **git push** to push the new commit to server. You can verify this in the server repo.
  
+> Note: If your local and remote branch has different name, use the convention \<local branch name\>:\<remote branch name\>
 
 ## Show VS Code
 1. Open the local repo folder in VS Code.
