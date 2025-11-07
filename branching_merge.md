@@ -91,6 +91,10 @@ Prune server branch that does not exist
 3. To rename a branch to "feature1", run `git branch -m feature1`.
 4. If this branch has a upstream branch, run `git push origin -u <new_branch_name>` to push the branch to origin with new name, then run `git push origin --delete <old_branch_name>` to delete the old branch from origin.
 
+## Show remote tracking branch
+1. Run the following command to show the remote tracking branch and their commit.
+   ```git branch -vv```
+   
 
 # Merging
 ## Fast forward merge
