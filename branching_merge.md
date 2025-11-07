@@ -11,6 +11,7 @@ You need to create a server side repo in Azure DevOps first and clone it to loca
   - [Delete branch that does not exist in server repo any more](#delete-branch-that-does-not-exist-in-server-repo-any-more)
   - [Create a branch from a commit](#create-a-branch-from-a-commit)
   - [Rename a branch](#rename-a-branch)
+  - [Show remote tracking branch](#show-remote-tracking-branch)
 - [Merging](#merging)
   - [Fast forward merge](#fast-forward-merge)
   - [No fast forward merge](#no-fast-forward-merge)
