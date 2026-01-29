@@ -62,6 +62,7 @@ This demo show common commands related to working with commit.
 4. Commit *file4.txt*
 5. Run **git reset --hard HEAD^**. This will revert the HEAD back to one commit before the current commit(current HEAD).
    * This will discard the last commit you did, essentially undo the last commit.
+   * To discard all local commits and revert to the head of the origin branch, run **git reset --hard origin/\<branch\>**
    * Other reading: https://stackoverflow.com/questions/3528245/whats-the-difference-between-git-reset-mixed-soft-and-hard
 
 ## Revert a specific commit (go back to the commit before it)
