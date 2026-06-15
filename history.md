@@ -3,6 +3,7 @@
   - [Stashing](#stashing)
   - [Unstage a change](#unstage-a-change)
   - [Showing evolution of a file](#showing-evolution-of-a-file)
+  - [Remove file from history.](#remove-file-from-history)
 # History
 ## Viewing history
 1. Run **git init** to initialize a new repo
@@ -90,4 +91,14 @@ You can understand the evolution of a file by seeing who make what change by whe
       git add file1.txt
       git commit -m "add line4"   
    ```
-2. Run **git blame file1.txt**. This will show the content of the file along with the commit ID, who make the change and when.
+2. Run **git blame file1.txt*
+
+ This will show the content of the file along with the commit ID, who make the change and when.
+
+## Remove file from history.
+A developer accidentally committed credentials (API key/password) to the repo. You need to:
+1. Remove that file from current and past commits.
+2. Rewrite history so the file is no longer reachable in Git history.
+3. Verify removal before pushing cleaned history.
+
+Refer to [this article](git-filter-repo/git-filter-repo.md) for detailed steps.
