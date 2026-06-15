@@ -141,7 +141,7 @@ git gc --aggressive --prune=now
 8. **Large repos may take time** and heavy disk I/O for rewrite.
 9. **LFS objects need separate handling** if the sensitive file was in Git LFS.
 
-[More details about caveats](git-filter-repo-caveats)
+[More details about caveats](git-filter-repo-caveats.md)
 
 
 ## Simple force-push script (after verification)
