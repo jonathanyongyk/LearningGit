@@ -12,6 +12,7 @@ You need to create a server side repo in Azure DevOps first and clone it to loca
   - [Create a branch from a commit](#create-a-branch-from-a-commit)
   - [Rename a branch](#rename-a-branch)
   - [Show remote tracking branch](#show-remote-tracking-branch)
+  - [Worktree - checkout multiple branches concurently.](#worktree---checkout-multiple-branches-concurently)
 - [Merging](#merging)
   - [Fast forward merge](#fast-forward-merge)
   - [No fast forward merge](#no-fast-forward-merge)
@@ -96,6 +97,10 @@ Prune server branch that does not exist
 1. Run the following command to show the remote tracking branch and their commit.
    ```git branch -vv```
    
+## Worktree - checkout multiple branches concurently.
+Occacionally, you may want to checkout multiple branches at the same time. This is possible using git worktree. You can create a new worktree for a branch and checkout that branch in the new worktree. You can then work on that branch in the new worktree while still working on another branch in the original worktree.
+
+Refer to [this article](git-worktree.md) for detailed steps.   
 
 # Merging
 ## Fast forward merge
