@@ -39,7 +39,13 @@ you would usually stash/commit/switch repeatedly or create extra clones.
 ```bash
 mkdir demo-worktree
 cd demo-worktree
+
+# this folder is the main repository for the project
 mkdir src
+
+# the branches folder will hold separate worktrees for different branches
+mkdir branches
+
 cd src
 git init
 ```
@@ -81,19 +87,25 @@ Return to `main` so you can create a hotfix branch in a separate worktree.
 From inside your original repository directory:
 
 ```bash
-git worktree add ../demo-hotfix -b hotfix/urgent
+git worktree add ../branches/hotfix -b hotfix/urgent
 ```
 
 What this does:
 
-- creates a new folder `../demo-hotfix`,
+- creates a new folder `hotfix` inside the *branches* folder.
 - creates branch `hotfix/urgent`,
-- checks it out in that new folder.
+- check out the hotfix branch into the *branches* folder.
 
-### 6) Make and commit a hotfix in the hotfix worktree
+### 6) Run the following commands to examine the branches and worktrees in the repo.    
+```bash
+git branch 
+git worktree list
+```
+
+### 7) Make and commit a hotfix in the hotfix worktree
 
 ```bash
-cd ../demo-hotfix
+cd ../branches/hotfix
 echo "Critical production fix" > hotfix-note.txt
 git add hotfix-note.txt
 git commit -m "fix: apply urgent production hotfix"
@@ -104,7 +116,7 @@ Now you have:
 - `feature/login` commit in the original directory.
 - `hotfix/urgent` commit in the hotfix worktree.
 
-### 7) Verify branch isolation in both directories
+### 8) Verify branch isolation in both directories
 
 In original directory:
 
@@ -117,16 +129,16 @@ git branch --show-current
 In hotfix worktree:
 
 ```bash
-cd ../demo-hotfix
+cd ../branches/hotfix
 pwd
 git branch --show-current
 ```
 
 Each folder stays on its own branch with its own changes.
 
-### 8) List active worktrees
+### 9) List active worktrees
 
-Run from either worktree:
+Run from either folder:
 
 ```bash
 git worktree list
@@ -134,7 +146,7 @@ git worktree list
 
 This shows all linked working directories and which branch each uses.
 
-### 9) Merge the hotfix back to `main` first
+### 10) Merge the hotfix back to `main` first
 
 ```bash
 cd ../src
@@ -144,7 +156,7 @@ git merge hotfix/urgent
 
 This models a realistic urgent fix flow: patch production first.
 
-### 10) Merge `main` into `feature/login` to avoid regression
+### 11) Merge `main` into `feature/login` to avoid regression
 
 Before merging the feature branch into `main`, pull the hotfix into the feature branch first. This ensures the feature is tested against the latest production code and cannot reintroduce a regression.
 
@@ -155,7 +167,7 @@ git merge main
 
 Resolve any conflicts, then verify the feature still works correctly with the hotfix applied.
 
-### 11) Merge the updated feature branch into `main`
+### 12) Merge the updated feature branch into `main`
 
 Now that `feature/login` contains the hotfix, it is safe to merge back:
 
@@ -168,21 +180,28 @@ A text editor may open for you to edit the merge commit message. Save and close 
 
 `main` now includes both the urgent fix and the fully-integrated feature work.
 
-### 12) Finish work and remove the extra worktree
+### 13) Finish work and remove the extra worktree
 
 ```bash
-git worktree remove ../demo-hotfix
+git worktree remove ../branches/hotfix
 ```
+
+### 14) Run the following commands to examine the branches and worktrees in the repo.
+```bash
+git branch 
+git worktree list
+```
+
 Although the worktree is removed, the `hotfix/urgent` branch still exists in the repository. You can delete it if you no longer need it.
 
-Optionally delete the associated branches if merged:
+### 15) Optionally delete the associated branches if merged:
 
 ```bash
 git branch -d hotfix/urgent
 git branch -d feature/login
 ```
 
-### 13) Prune stale metadata (optional maintenance)
+### 16) Prune stale metadata (optional maintenance)
 
 ```bash
 git worktree prune
