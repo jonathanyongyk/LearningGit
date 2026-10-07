@@ -297,42 +297,11 @@ We can trace back what are the changes in each commit. This enable you to quickl
       
 # Rewriting commit
 ## Change the last commit message
-1. Run **git init** to initialize a repo.
-2. Create a new file *file1.txt*
-3. Add 3 lines to *file1.txt* and commit each line separately
-```Powershell
-Add-Content -Path .\file1.txt -Value 'line1'
-git add file1.txt
-git commit -m "add line 1"
+Refer to [this article](commit/change-the-last-commit-message.md) for detailed steps.
 
-Add-Content -Path .\file1.txt -Value 'line2'
-git add file1.txt
-git commit -m "add line 2"
-
-Add-Content -Path .\file1.txt -Value 'line3'
-git add file1.txt
-git commit -m "add line 3"
-```
-4. Run **git log**. you should see 3 commmits.
-5. Now **run git commit --amend**. This will open the last commit message in a editor. You can see the original commit message.
-6. Add "it got some cool stuff" behind the original commit message. save and close the edit.
-7. Run **git log**. You can see the commit message has been updated.
-```text
-After the --amend complete, a new commit id will be generated replacing the previous one. This is because the commit id hash is calculated based on the committed changes, commit message, and timestamp. If any one of this change, the commit id hash will change also.
-```
 ## Change the content of the last commit.
-After you commit, you realize that you forgot to include some files in the commit. You can amend the commit to include these additional files that you forgot earlier.
-1. Make sure you have run the previous demo "Change the last commit message".
-2. edit file1.txt by adding "(forgot something)" to the end of "line 3"
-3. Stage the change by run **git add file1.txt**.
-4. Now run **git commit --amend**. This will open the last commit message in a editor. You can see the original commit message.
-5. Add "missing some stuff" after the original commit message. save and close the edit.
-6. Run **git log**. You can see the commit message has been updated and file1.txt is added to the commit.
-7. You can also update the content, commit it without a new commit message.
-8. Edit *file1.txt* by making some change.
-9. Stage the change by run **git add file1.txt**.
-10. Now run **git commit --amend --no-edit**. This will update the commit without prompt you for a commit messgae.
-11. Run **git log**. You should not see any change in the commit log. But if you run **git diff**, you can see the change in the content.
+Refer to [this article](commit/change-the-content-of-the-last-commit.md) for detailed steps.
+
 
 # Tracing/Listing/Following commits
 Some times you may want to follow the historical commits to understand how the repo or even just a particular file has evolved over time. This can be times where you may want to know when a change was made to a file, or just in general what are the list of commits that touches a specific file. To do this, you can use the ```git rev-list``` command. This command list commits that are reachable by following the parent links from the given commit(s).
