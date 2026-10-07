@@ -55,3 +55,19 @@ git add feature2.js
 10. Run **git log**. You can see the commit message has been updated and *feature2\.js* is added to the commit.
 11. You can also update the content, commit it without a new commit message. To do so, run ****git commit --amend --no-edit**.
 12. Run **git log**. You should not see any change in the commit log. But if you run **git diff HEAD..\<previous_commit_id\>**, you can see the change in the content.
+
+---
+
+## 🛠️ The Two Actions Combined
+You can combine the **git add** and **git commit --amend** by using **git commit --amend --all**.
+This command combines two separate actions into a single step: staging all modified files and fusing them directly into your previous commit. 
+
+1. **`--all` (or `-a`)**: Automatically **stages all tracked files** that you have modified or deleted. It skips the need to run `git add .` first. *(Note: It will not stage completely new, untracked files).*
+2. **`--amend`**: Takes whatever is currently staged and **blends it directly into the most recent commit**. It replaces the old commit with a brand-new one containing the updates.
+
+
+## ⚠️ Important Warning
+
+Because `--amend` rewrites Git history, **only use this if you have not pushed your commit to a remote server yet** (like GitHub or GitLab). 
+
+If you amend a commit that your team members have already pulled down, you will alter the commit ID, which can cause painful synchronization conflicts for everyone else on the project.
