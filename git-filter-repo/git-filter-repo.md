@@ -54,10 +54,19 @@ git commit -m "Add secrets and feature2 file"
 
 6. Add more commits after the sensitive commit.
 ```powershell
+# new commit
 echo "console.log('Feature added');" >> app.js
 git add app.js
 git commit -m "Add feature to app"
 
+# another new commit with secret added
+echo "APP_TOKEN=this_is_a_test_token" >> secrets.txt
+echo "console.log('feature 2 enhanced');" >> feature2.js
+git add secrets.txt
+git add feature2.js
+git commit -m "Add APP_TOKEN to secrets and enhance feature2"
+
+# more commit after secret added
 echo "console.log('Another update');" >> app.js
 git add app.js
 git commit -m "Another update"
@@ -69,7 +78,8 @@ git log --oneline --name-status
 git log --all -- secrets.txt
 ```
 
-![Master initial history](img/01-master-initial-history.png)
+![Master history](img/01-git-history-before-clearing.png)
+![Secret file history](img/02-secret-file-log.png)
 
 
 8. Create a safety branch before rewrite.
@@ -77,26 +87,13 @@ git log --all -- secrets.txt
 git checkout -b cleanup
 ```
 
-9. Create a side branch (`feature2`) with additional changes.
+
+9.  Rewrite history to remove `secrets.txt`.
 ```powershell
-git checkout master
-git checkout -b feature2
-echo "console.log('Feature 2 work');" >> feature2.js
-git add feature2.js
-git commit -m "Work on feature 2"
-git log --oneline --name-status
-```
-
-![Feature2 initial history](img/02-feature2-initial-history.png)
-
-
-10. Return to cleanup branch and rewrite history to remove `secrets.txt`.
-```powershell
-git checkout cleanup
 git filter-repo --path secrets.txt --invert-paths --force
 ```
 
-11. Verify removal from history and working tree.
+10.  Verify removal from history and working tree.
 ```powershell
 git log --oneline --name-status
 git log --all -- secrets.txt
@@ -107,7 +104,7 @@ ls secrets.txt
 You should see no commits referencing `secrets.txt` and the file should not exist in the working directory.
 The commit hashes have changed due to the rewrite.
 
-12. Switch back to *master* and review history.
+11. Switch back to *master* and review history.
 ```powershell
 git checkout master
 git log --oneline --name-status
@@ -117,14 +114,7 @@ git log --oneline --name-status
 
 The commit history on *master* should also reflect the removal of `secrets.txt` and the file should no longer be present in any commit. The hashes will differ from the original history.
 
-13. Switch to *feature2* and review history.
-```powershell
-git checkout feature2
-git log --oneline --name-status
-```
-![Feature2 history after remove](img/05-feature2-after-remove.png)
-
-14. Clean local references to old objects.
+12.  Clean local references to old objects.
 ```powershell
 git reflog expire --expire=now --all
 git gc --aggressive --prune=now
